@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<html>
+<head>
+	<meta property="og:title" content="신조어 유토피아" />
+	<meta property="og:description" content="나는 신조어를 얼마나 알고 있을까?" />
+	<meta property="og:type" content="website" />
+	<meta property="og:url" content="https://ohyudeok.github.io/2020-semi/" />
+	<meta property="og:image" content="thumb.jpg" />
+	<title>신조어 유토피아</title>
+	<style type="text/css">
+		@font-face { font-family: 'TmoneyRoundWindExtraBold'; src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/TmoneyRoundWindExtraBold.woff') format('woff'); font-weight: normal; font-style: normal; }
+
+		body,h1{margin:0; padding:0;}
+
+		p{font-size: 1.7vw; display: block; margin-left: 17%; line-height: 1.6em; margin-top: 38%; font-family: 'TmoneyRoundWindExtraBold'; text-shadow: 1.5px 1.5px white;}
+
+		body{background: #a4cdff;}
+
+		.wrap{width:100%;
+			position: relative;
+			left:0; overflow: hidden;}
+
+		.map{width:85%; 
+			position: relative;
+			padding-top: 47.6%;
+			overflow:hidden; float:right;
+			animation: lr 2s infinite alternate linear; animation-delay: 0.8s;}
+
+		.map img{max-width: 100%; height: auto;
+				position: absolute; display:block; margin:auto;
+				top:50%; left:50%;
+				transform: translate(-50%, -50.3%);}
+
+		.map div{background:red; opacity:1; 
+			position: absolute;}
+
+			@keyframes lr{
+				from{left:0px;}
+				to{left:10px;}
+			}
+
+		.map div:hover{opacity: 1}
+		#dum1{width:100%; height:auto; left:23.8%; top:52%;}
+		#hospital{width:100%; height:auto; left:60.7%; top:35.5%;}
+		#cafe{width:100%; height:auto; left:32%; top:47.5%;}
+		#dum2{width:100%; height:auto; left:50%; top:53.5%;}
+		#babjip{width:100%; height:auto; left:56.4%; top:55.2%;}
+		#comp{width:100%; height:auto; left:75.4%; top:44%;}
+		#dum3{width:100%; height:auto; left:66%; top:70%;}
+		#dum4{width:100%; height:auto; left:48.5%; top:60%;}
+		#shadow1{width:100%; height:auto; left:55%; top:87%;}
+		#school{width:100%; height:auto; left:59.7%; top:77%;}
+		#dum5{width:100%; height:auto; left:52.1%; top:81%;}
+		#honbabi{width:100%; height:auto; left:26.5%; top:65%;}
+		#fingp{width:100%; height:auto; left:44%; top:77%;}
+		#latte{width:100%; height:auto; left:39.2%; top:56.5%;}
+		#tmt{width:100%; height:auto; left:88%; top:32%;}
+		#groom{width:100%; height:auto; left:91%; top:74%;}
+		#smomb{width:100%; height:auto; left:78%; top:81%;}
+
+		#honbabi:hover{transform:translate(0,-8px);}
+		#fingp:hover{transform:translate(0,-8px);}
+		#latte:hover{transform:translate(0,-8px);}
+		#tmt:hover{transform:translate(0,-8px);}
+		#groom:hover{transform:translate(0,-8px);}
+		#smomb:hover{transform:translate(0,-8px);}
+
+		#hospital:hover{transform:scale(1.1,1.1);}
+		#cafe:hover{transform:scale(1.1,1.1);}
+		#babjip:hover{transform:scale(1.1,1.1);}
+		#comp:hover{transform:scale(1.1,1.1);}
+		#school:hover{transform:scale(1.1,1.1);}
+
+
+		.map2{width:85%; 
+			position: absolute;
+			margin-top: 2%;
+			overflow:hidden;
+			animation: rl 2s alternate infinite linear;
+			animation-delay: 0.8s;}
+
+			@keyframes rl{
+				from{left:0px;}
+				to{left: -10px;}
+			}
+
+		.map2 img{max-width: 100%;}
+
+		.log{width:35%; 
+			position: absolute;
+			margin-top: -2%;
+			overflow:hidden; animation: sc 0.5s alternate;}
+		.log img{max-width: 100%;}
+
+		@keyframes sc{
+			to{transform:scale(1.1,1.1);}
+		}
+		/*캐릭터 소개 카드*/
+		#card1{width:00%; 
+			position: absolute;
+			padding-top:8%;
+			padding-left:25%;
+			overflow:hidden; opacity:0;}
+		#card1 img{max-width: 100%;}
+
+		#card2{width:00%; 
+			position: absolute;
+			padding-top:8%;
+			padding-left:25%;
+			overflow:hidden; opacity:0;}
+		#card2 img{max-width: 100%;}
+
+		#card3{width:00%; 
+			position: absolute;
+			padding-top:8%;
+			padding-left:25%;
+			overflow:hidden; opacity:0;}
+		#card3 img{max-width: 100%;}
+
+		#card4{width:00%; 
+			position: absolute;
+			padding-top:8%;
+			padding-left:25%;
+			overflow:hidden; opacity:0;}
+		#card4 img{max-width: 100%;}
+
+		#card5{width:00%; 
+			position: absolute;
+			padding-top:8%;
+			padding-left:25%;
+			overflow:hidden; opacity:0;}
+		#card5 img{max-width: 100%;}
+
+		#card6{width:00%; 
+			position: absolute;
+			padding-top:8%;
+			padding-left:25%;
+			overflow:hidden; opacity:0;}
+		#card6 img{max-width: 100%;}
+
+
+	</style>
+</head>
+<body>
+	<section class="wrap">
+		
+		<!--왼쪽에서 움직이는 지도-->
+		<div class="map2" id="map2">
+			<img src="downtown2.png">
+		</div>
+
+		<!--오른쪽 마을 지도-->
+		<div class="map" id="map">
+			<img src="downtown.png">
+
+			<div id="dum1" style="width:30%;">
+				<img src="dum1.png" style="width:100%;">
+			</div>
+			<div id="hospital" style="width:15%;">
+				<a href="./hospitalgame.html"><img src="hospital.png" style="width:100%;"></a>
+			</div>
+			<div id="cafe" style="width:20%;">
+				<a href="./cafegame.html"><img src="cafe.png" style="width:100%;"></a>
+			</div>
+			<div id="dum2" style="width:43%;">
+				<img src="dum2.png" style="width:100%;">
+			</div>
+			<div id="babjip"style="width:13.5%;">
+				<a href="./test1.html"><img src="babjip.png" style="width:100%;"></a>
+			</div>
+			<div id="comp"style="width:10.5%;">
+				<a href="./compgame.html"><img src="comp.png" style="width:100%;"></a>
+			</div>
+			<div id="dum3" style="width:29%;">
+				<img src="dum3.png" style="width:100%;">
+			</div>
+			<div id="dum4" style="width:10%;">
+				<img src="dum4.png" style="width:100%;">
+			</div>
+			<div id="shadow1" style="width:21.5%;">
+				<img src="shadow1.png" style="width:100%;">
+			</div>
+			<div id="school" style="width:17%;">
+				<a href="./schooltest.html"><img src="school.png" style="width:100%;"></a>
+			</div>
+			<div id="dum5" style="width:13%;">
+				<img src="dum5.png" style="width:100%;">
+			</div>
+
+			<!--여기서부터 캐릭터-->
+			<div id="honbabi"style="width:8%;">
+				<img src="honbabi.png" style="width:100%;">
+			</div>
+			<div id="fingp"style="width:8%;">
+				<img src="fingp.png" style="width:100%;">
+			</div>
+			<div id="latte"style="width:8%;">
+				<img src="latte.png" style="width:100%;">
+			</div>
+			<div id="tmt"style="width:8%;">
+				<img src="tmt.png" style="width:100%;">
+			</div>
+			<div id="groom"style="width:8%;">
+				<img src="groom.png" style="width:100%;">
+			</div>
+			<div id="smomb"style="width:8%;">
+				<img src="smomb.png" style="width:100%;">
+			</div>
+		</div>
+
+		<!--로고div-->
+		<div class="log" id="logo">
+			<img src="logo.png">
+			<div class="pb">
+			<p>각 건물을 방문하고 캐릭터를 클릭해서 <br>신조어 지식을 테스트 해보세요!</p>
+			</div>
+		</div>
+
+		<!--캐릭터 설명 카드div-->
+		<div id="card1">
+			<img src="./honbabicard.png">
+		</div>
+		<div id="card2">
+			<img src="./lattecard.png">
+		</div>
+		<div id="card3">
+			<img src="./fingpcard.png">
+		</div>
+		<div id="card4">
+			<img src="./smombcard.png">
+		</div>
+		<div id="card5">
+			<img src="./groomcard.png">
+		</div>
+		<div id="card6">
+			<img src="./tmtcard.png">
+		</div>
+	
+	</section>
+</body>
+	<script type="text/javascript"> 
+
+		// 혼바비언 소개 카드
+	honbabi.onclick=function(){
+		card1.style.opacity = "1";
+		card1.style.width = "50%";
+		map2.style.opacity = "0.5";
+		map.style.opacity = "0.5";
+		logo.style.opacity = "0.5";
+	}
+
+	card1.onclick=function(){
+		card1.style.opacity = "0";
+		card1.style.width = "0%";
+		map2.style.opacity = "1";
+		map.style.opacity = "1";
+		logo.style.opacity = "1";
+	}
+
+	//라떼족 소개 카드
+	latte.onclick=function(){
+		card2.style.opacity = "1";
+		card2.style.width = "50%";
+		map2.style.opacity = "0.5";
+		map.style.opacity = "0.5";
+		logo.style.opacity = "0.5";
+	}
+
+	card2.onclick=function(){
+		card2.style.opacity = "0";
+		card2.style.width = "0%";
+		map2.style.opacity = "1";
+		map.style.opacity = "1";
+		logo.style.opacity = "1";
+	}
+
+	//핑프족 소개 카드
+	fingp.onclick=function(){
+		card3.style.opacity = "1";
+		card3.style.width = "50%";
+		map2.style.opacity = "0.5";
+		map.style.opacity = "0.5";
+		logo.style.opacity = "0.5";
+	}
+
+	card3.onclick=function(){
+		card3.style.opacity = "0";
+		card3.style.width = "0%";
+		map2.style.opacity = "1";
+		map.style.opacity = "1";
+		logo.style.opacity = "1";
+	}
+
+	//스몸비족 소개 카드
+	smomb.onclick=function(){
+		card4.style.opacity = "1";
+		card4.style.width = "50%";
+		map2.style.opacity = "0.5";
+		map.style.opacity = "0.5";
+		logo.style.opacity = "0.5";
+	}
+
+	card4.onclick=function(){
+		card4.style.opacity = "0";
+		card4.style.width = "0%";
+		map2.style.opacity = "1";
+		map.style.opacity = "1";
+		logo.style.opacity = "1";
+	}
+
+	//그루밍족 소개 카드
+	groom.onclick=function(){
+		card5.style.opacity = "1";
+		card5.style.width = "50%";
+		map2.style.opacity = "0.5";
+		map.style.opacity = "0.5";
+		logo.style.opacity = "0.5";
+	}
+
+	card5.onclick=function(){
+		card5.style.opacity = "0";
+		card5.style.width = "0%";
+		map2.style.opacity = "1";
+		map.style.opacity = "1";
+		logo.style.opacity = "1";
+	}
+
+	//tmt족 소개 카드
+	tmt.onclick=function(){
+		card6.style.opacity = "1";
+		card6.style.width = "50%";
+		map2.style.opacity = "0.5";
+		map.style.opacity = "0.5";
+		logo.style.opacity = "0.5";
+	}
+
+	card6.onclick=function(){
+		card6.style.opacity = "0";
+		card6.style.width = "0%";
+		map2.style.opacity = "1";
+		map.style.opacity = "1";
+		logo.style.opacity = "1";
+	}
+	</script>
+
+
+</html>

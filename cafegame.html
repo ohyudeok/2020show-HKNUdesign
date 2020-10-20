@@ -1,0 +1,355 @@
+<html>
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+	<title>음식 이름 짝짓기2</title>
+
+	<style type="text/css">
+		@font-face {
+		    font-family: 'Binggrae-Bold';
+		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+		    font-weight: normal;
+		    font-style: normal;
+		}
+
+		@font-face {
+    font-family: 'paybooc-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+ 
+@font-face {
+    font-family: 'paybooc-Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'paybooc-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+            
+@font-face {
+    font-family: 'paybooc-ExtraBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-ExtraBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+		h1 {font-size: 50px; margin:0; padding:0; font-family: 'Binggrae-Bold'; text-align: center; background: white; border-radius: 100px; margin-top: 20px; opacity: 0.9;}
+		h2 {font-size: 23px; width:500px; margin:0; padding: 10px; background-color: white; margin-top: 55px; font-family: 'paybooc-Bold'; border-radius: 100px; opacity: 0.9;}
+		body{background: url('cafeback.png'); background-repeat: no-repeat; margin: 0; padding:0; background-size:1600px; width: 100%; position: relative; overflow: hidden; background-position: 0,0,0,0;}
+
+		.problem{width:800px; position: absolute; margin-left: 30%; margin-top: -3%; animation: ud 1s;}
+		.problem img{width: 800px; animation: ud 1s;}
+
+		.wrap0{width:1600px; margin:auto;border-radius:10px; height:720px;display: block;}
+		.wrap{width:1600px; margin:0; border-radius:10px; height:800px; display:block;}
+
+		.table{width:1600px; position: absolute; margin-top: -15%; margin-left: -4%; height:100px;}
+		.table img{width:100%;}
+
+		.wrap2 img{margin-right:15px; margin-left:10px; margin-top:280px; }
+		.wrap2{display: block; margin: auto; width:900px; position: absolute; margin-left: 20%;}
+
+		@keyframes ud{
+			0%{opacity: 0; margin-left:0%;}
+			100%{opacity:1; margin-left:20%;}
+		}
+
+		p{margin: 0; padding:10; font-size: 5vw; background: black; border-radius: 50%; padding-left: 30px; padding-right: 30px; color: white; font-family: 'paybooc-Bold';}
+
+		@keyframes opa{
+			to{opacity: 1;}
+			from{opacity: 0;}
+		}
+
+		a{opacity: 1;}
+		a:hover{opacity: 0.8;}
+
+		#answerboard{position:absolute; font-family: 'paybooc-Bold'; margin-top: 10px; margin-left: 280px;}
+
+	</style>
+
+<script language="javascript">
+var delay=2; //시간설정
+var correctAnswers=new Array("a","b","a","c","b","b","c","a","a","c","b","a","a","a","b","b","c","a","c","a");  //정답
+
+var q_num=1;
+var timer;
+var layer;
+var clock=delay;
+var score=0;
+
+function show_question(){
+	if (layer=eval("document.all.question"+q_num)){
+		layer.style.display="inline";
+		document.all.timeLeft.innerHTML=clock;
+		hide_question();
+	} else {
+		document.all.timeLeft.innerHTML=0;
+		document.all.quizScore.innerHTML="당신은 "+(q_num-1)+"문제 중 "+score+"개를 맞췄습니다.";
+		document.all.quizScore.style.display="block";
+		document.all.quizScore.style.fontSize="30px";
+		document.all.quizScore.style.marginTop="182px";
+		document.all.quizScore.style.textAlign="center";
+		document.all.quizScore.style.fontFamily="paybooc-Bold";
+	}
+}
+
+function hide_question(){
+	if (clock>0) {
+		document.all.timeLeft.innerHTML=clock;
+		clock--;
+		timer=setTimeout("hide_question()",1000);
+	} else {
+		clearTimeout(timer);
+		document.all.answerBoard.innerHTML=" ";
+		clock=delay;
+		layer.style.display="none";
+		q_num++;
+		show_question();
+	}
+}
+
+function check_answer(answer){
+	if (correctAnswers[q_num-1]==answer){
+		score++;
+		document.all.answerBoard.innerHTML="<font size=10vw;><b>석유?!</b></font>";
+	} else {
+		document.all.answerBoard.innerHTML="<font size=10vw;><b>청정수!</b></font>";
+	}
+	clock=0;
+	clearTimeout(timer);
+	timer=setTimeout("hide_question()",700);
+}
+
+window.onload=show_question;
+</script>
+</head>
+
+<body>
+<div class="wrap0">
+<div class="wrap">
+	<h1>손님이 주문한 메뉴를 맞춰라!</h1>
+
+	<p style="float:left; font-family: 'paybooc-Bold'; margin-left: 10%; margin-top: 3%;"><strong><span id="timeLeft"></span></strong></p><br>
+	<br>
+	<br>
+
+	<div id="question1" style="display:none">
+		<div class="problem"><img src="character_4.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+		
+	</div>
+
+	<div id="question2" style="display:none">
+		<div class="problem"><img src="character_51.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+	<div id="question3" style="display:none">
+		<div class="problem"><img src="character_6.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+	<div id="question4" style="display:none">
+		<div class="problem"><img src="character_32.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+	<div id="question5" style="display:none">
+		<div class="problem"><img src="character_21.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+	<div id="question6" style="display:none">
+		<div class="problem"><img src="character_31.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+	<div id="question7" style="display:none">
+		<div class="problem"><img src="character_42.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+	<div id="question8" style="display:none">
+		<div class="problem"><img src="character_5.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+	<div id="question9" style="display:none">
+		<div class="problem"><img src="character_6.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+	<div id="question10" style="display:none">
+		<div class="problem"><img src="character_32.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+		
+	</div>
+
+	<div id="question11" style="display:none">
+		<div class="problem"><img src="character_51.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+	<div id="question12" style="display:none">
+		<div class="problem"><img src="character_6.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+	<div id="question13" style="display:none">
+		<div class="problem"><img src="character_5.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+	<div id="question14" style="display:none">
+		<div class="problem"><img src="character_2.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+	<div id="question15" style="display:none">
+		<div class="problem"><img src="character_31.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+	<div id="question16" style="display:none">
+		<div class="problem"><img src="character_41.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+	<div id="question17" style="display:none">
+		<div class="problem"><img src="character_62.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+	<div id="question18" style="display:none">
+		<div class="problem"><img src="character_2.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+	<div id="question19" style="display:none">
+		<div class="problem"><img src="character_32.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+	<div id="question20" style="display:none">
+		<div class="problem"><img src="character_4.png"></div>
+		<div class="table"><img src="cafedesk.png"></div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="iceamericano.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="icevanila.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="hotamericano.png"/></a>
+		</div>
+	</div>
+
+		<div id="answerBoard"> </div>
+
+	<div id="quizScore" style="display:none">
+	</div>
+</div>
+</div>
+
+</body>
+</html>
+

@@ -1,0 +1,250 @@
+<html>
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="content-type">
+
+	<title>음식 이름 짝짓기</title>
+
+	<style type="text/css">
+		@font-face {
+		    font-family: 'Binggrae-Bold';
+		    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+		    font-weight: normal;
+		    font-style: normal;
+		}
+
+		@font-face {
+    font-family: 'paybooc-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+ 
+@font-face {
+    font-family: 'paybooc-Light';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Light.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'paybooc-Medium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+            
+@font-face {
+    font-family: 'paybooc-ExtraBold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-ExtraBold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+		h1 {font-size: 50px; margin:0; padding:0; font-family: 'Binggrae-Bold'; text-align: center; background: white; border-radius: 100px; margin-top: 20px; opacity: 0.9; width: 700px; margin: auto;}
+		h2 {font-size: 23px; width:500px; margin:0; padding: 10px; background-color: white; margin-top: 55px; font-family: 'paybooc-Bold'; border-radius: 100px; opacity: 0.9;}
+		body{background: url('menuback.png'); background-repeat: no-repeat; margin: 0; padding:0; background-width:2000px;}
+		.wrap0{width:1100px; margin:auto; padding:20px; border-radius:10px; height:900px; background:url('menu2.png'); background-size: 1000px; background-repeat: no-repeat; display: block;  background-position: 40,0,0,0; }
+		.wrap{width:800px; margin:50px auto; padding:20px; border-radius:10px; height:800px; display:block;}
+		img{margin-right:20px; margin-left:20px; margin-top:-20px; margin-bottom:10px;}
+		.wrap2{display: block; margin: auto; width:690px;}
+
+		p{margin: 0; padding:10; font-size: 3vw; background: black; border-radius: 50%; padding-left: 30px; padding-right: 30px; color: white; font-family: 'paybooc-Bold'; display: block;}
+
+		@keyframes opa{
+					to{opacity: 1;}
+					from{opacity: 0;}
+				}
+
+
+		a{opacity: 0.8;}
+		a:hover{opacity: 1;}
+
+		#answerboard{position: absolute; font-family: 'paybooc-Bold'; background:black; padding:0; color: white; margin-top: -15px; margin-left: -40px;}
+
+	</style>
+
+<script language="javascript">
+var delay=9; //시간설정
+var correctAnswers=new Array("a","a","c","b","d","c","a","c","a");  //정답
+
+var q_num=1;
+var timer;
+var layer;
+var clock=delay;
+var score=0;
+
+function show_question(){
+	if (layer=eval("document.all.question"+q_num)){
+		layer.style.display="inline";
+		document.all.timeLeft.innerHTML=clock;
+		hide_question();
+	} else {
+		document.all.timeLeft.innerHTML=0;
+		document.all.quizScore.innerHTML="당신은 "+(q_num-1)+"문제 중 "+score+"개를 맞췄습니다.<br>당신의 친구와 대결해보세요!";
+		document.all.quizScore.style.display="block";
+		document.all.quizScore.style.fontSize="30px";
+		document.all.quizScore.style.marginTop="280px";
+		document.all.quizScore.style.textAlign="center";
+		document.all.quizScore.style.fontFamily="paybooc-Bold";
+		document.all.quizScore.style.lineHeight="1.6";
+	}
+}
+
+function hide_question(){
+	if (clock>0) {
+		document.all.timeLeft.innerHTML=clock;
+		clock--;
+		timer=setTimeout("hide_question()",1000);
+	} else {
+		clearTimeout(timer);
+		document.all.answerBoard.innerHTML=" ";
+		clock=delay;
+		layer.style.display="none";
+		q_num++;
+		show_question();
+	}
+}
+
+function check_answer(answer){
+	if (correctAnswers[q_num-1]==answer){
+		score++;
+		document.all.answerBoard.innerHTML="<font size=6vw;><b>당신은 석유인가요?!</b></font>";
+	} else {
+		document.all.answerBoard.innerHTML="<font size=6vw;><b>당신은 청정수!</b></font>";
+	}
+	clock=0;
+	clearTimeout(timer);
+	timer=setTimeout("hide_question()",700);
+}
+
+window.onload=show_question;
+</script>
+</head>
+
+<body>
+<div class="wrap0">
+<div class="wrap">
+	<h1>이름과 알맞은 음식을 골라봐!</h1>
+
+	<p style="float:left; font-family: 'paybooc-Bold'; margin-left: -7%; margin-top: -10%;"><strong><span id="timeLeft"></span></strong></p><br>
+	<br>
+	<div id="answerBoard"> </div>
+	<br>
+	<div id="question1" style="display:none">
+		<h2>1. 다음 중 '푸라띤'은 무엇일까요?</h2><br>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="ramen.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="jajang.png"/></a>
+		</div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="jjolmean.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('d')"><img src="watermaen.png"/></a>
+		</div>
+	</div>
+
+	<div id="question2" style="display:none">
+		<h2>2. 다음 중 '부머찌개'는 무엇일까요?</h2><br>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="jjigae.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="bibimbab.png"/></a>
+		</div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="watermaen.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('d')"><img src="ramen.png"/></a>
+		</div>
+	</div>
+
+	<div id="question3" style="display:none">
+		<h2>3. 다음 중 '쫄띤'은 무엇일까요?</h2><br>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="ramen.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="jajang.png"/></a>
+		</div>
+		<div class="wrap2">	
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="jjolmean.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('d')"><img src="watermaen.png"/></a>
+		</div>
+	</div>
+
+	<div id="question4" style="display:none">
+		<h2>4. 다음 중 '물냉띤'은 무엇일까요?</h2><br>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="bibimbab.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="watermaen.png"/></a>
+		</div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="jjolmean.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('d')"><img src="ramen.png"/></a>
+		</div>
+	</div>
+
+	<div id="question5" style="display:none">
+		<h2>5. 다음 중 '짜장띤'은 무엇일까요?</h2><br>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="ramen.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="jjolmean.png"/></a>
+		</div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="redmean.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('d')"><img src="jajang.png"/></a>
+		</div>
+	</div>
+
+	<div id="question6" style="display:none">
+		<h2>6. 다음 중 '네넴밥'은 무엇일까요?</h2><br>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="jjigae.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="ramen.png"/></a>
+		</div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="bibimbab.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('d')"><img src="redmean.png"/></a>
+		</div>
+	</div>
+
+	<div id="question7" style="display:none">
+		<h2>7. 다음 중 '네넴냉띤'은 무엇일까요?</h2><br>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="redmean.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="jajang.png"/></a>
+		</div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="ramen.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('d')"><img src="bibimbab.png"/></a>
+		</div>
+	</div>
+
+	<div id="question8" style="display:none">
+		<h2>8. 다음 중 '띤' 종류가 아닌 것은 무엇일까요?</h2><br>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="jajang.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="ramen.png"/></a>
+		</div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="bibimbab.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('d')"><img src="redmean.png"/></a>
+		</div>
+	</div>
+
+	<div id="question9" style="display:none">
+		<h2>9. 다음 중 '네넨' 종류가 아닌 것은 무엇일까요?</h2><br>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('a')"><img src="jjigae.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('b')"><img src="jajang.png"/></a>
+		</div>
+		<div class="wrap2">
+			<a href="javascript:void(0)" onclick="check_answer('c')"><img src="jjolmean.png"/></a>
+			<a href="javascript:void(0)" onclick="check_answer('d')"><img src="bibimbab.png"/></a>
+		</div>
+	</div>
+
+		
+
+	<div id="quizScore" style="display:none">
+	</div>
+</div>
+</div>
+
+</body>
+</html>
+

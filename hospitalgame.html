@@ -1,0 +1,358 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width">
+  <title>코로나 신조어를 잡아라!</title>
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P&display=swap" rel="stylesheet">
+
+  <style type="text/css">
+
+    @font-face {
+        font-family: 'Binggrae-Bold';
+        src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_one@1.0/Binggrae-Bold.woff') format('woff');
+        font-weight: normal;
+        font-style: normal;
+    }
+
+    @font-face {
+    font-family: 'paybooc-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+   
+  @font-face {
+      font-family: 'paybooc-Light';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Light.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+  }
+
+  @font-face {
+      font-family: 'paybooc-Medium';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Medium.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+  }
+              
+  @font-face {
+      font-family: 'paybooc-ExtraBold';
+      src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-ExtraBold.woff') format('woff');
+      font-weight: normal;
+      font-style: normal;
+  }
+    
+html, body {
+  box-sizing: border-box;
+  background-image: url('./hospitalback2.png');
+  background-size: 1600px;
+  background-repeat: no-repeat;
+  background-position: -35px 0;
+  position: relative; overflow: hidden;
+  height: 720px;
+  margin:0; padding: 0;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+h1 {
+  text-align: center;
+  line-height: 1.5;
+  font-size: 50px; margin:0; padding:0; font-family: 'Binggrae-Bold'; margin-top: 20px; background:white;border-radius: 100px; opacity: 0.9; margin-left: 350px; margin-right: 350px;
+}
+.main{
+  position: relative;
+  width: 100%;
+}
+.whack-a-mole {
+  background-color:#028f3f;
+  margin: 0 auto;
+  list-style: none;
+  width: 600px;
+  border-radius: 20px;
+}
+.mole{
+  float: left;
+  width: 160px;
+  height: 160px;
+  margin: 10px;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 20px;
+  background: no-repeat center/cover url('./opacity0.png');
+}
+.mole >img{
+  position: relative;
+  bottom: -5px;
+  display: block;
+  width: 100%;
+  opacity: 0;
+  transition: 0.05s ease-out;
+}
+.whack-a-mole .active{
+  bottom: 0;
+  opacity: 1;
+  animation: shake 0.5s;
+  animation-iteration-count: infinite; 
+  
+}
+@keyframes shake {
+  0% { transform: translate(1px, 1px) rotate(0deg); }
+  10% { transform: translate(-1px, -2px) rotate(-1deg); }
+  20% { transform: translate(-3px, 0px) rotate(1deg); }
+  30% { transform: translate(3px, 2px) rotate(0deg); }
+  40% { transform: translate(1px, -1px) rotate(1deg); }
+  50% { transform: translate(-1px, 2px) rotate(-1deg); }
+  60% { transform: translate(-3px, 1px) rotate(0deg); }
+  70% { transform: translate(3px, 1px) rotate(-1deg); }
+  80% { transform: translate(-1px, -1px) rotate(1deg); }
+  90% { transform: translate(1px, 2px) rotate(0deg); }
+  100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+	#game-bg{
+		width: 700px;
+		margin:auto;
+		background:white;
+	}
+
+.point-wrap{
+  width: 18%;
+  height: 68px;
+  margin: 20px  0 0;position: absolute;
+  margin-top: 555px;
+  margin-left: 28%;
+  background: black;
+  padding-left: 45px;
+  border-radius: 20px;
+}
+.btn-wrap{
+  float: right;
+  width: 100%;
+}
+.start-btn {
+  float: left;
+  width: 18%;
+  height: 70px;
+  font-size: 20px;
+  font-weight: 900;
+  margin: 10px 0 30px 0;
+  background: #222;
+  border: none;
+  color: #f2ecff;
+  border-radius: 20px;
+  position: absolute;
+  margin-left: 55%;
+}
+.start-btn:hover{
+  opacity: 0.5;
+  color: #f9f871;
+}
+.point-box {
+  background-color: #4e4e4e;
+  width: 300px;
+  margin: 0px auto 0 auto;
+  border-radius: 20px;
+}
+#point-text {
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  color: #f2ecff;
+  margin: 15px 0 0 0;
+}
+#count-mole {
+  float: left;
+  font-size: 30px;
+  font-weight: bold;
+  color: #f9f871;
+  margin: 10px 10px 0 30px;
+}
+#count-mole2 {
+  float: left;
+  font-size: 24px;
+  font-weight: bold;
+  color: #f2ecff;
+  margin: 15px 0 0 0;
+}
+.ending {
+  display:none;
+  position: absolute;
+  border-radius: 20px;
+  font-size: 20px;
+  text-align: center;
+  top: 20%;
+  left: 38%;
+  width: 400px;
+  height: 250px;
+  margin: 0 auto;
+  background: #3d3f43;
+  z-index: 2;
+}
+#ending-box {
+  margin: 50px 0 0 0;
+  font-size: 30px;
+  line-height: 1.8;
+  color: #f2ecff;
+}
+#ending-box .last {
+  color: #fbb666;
+}
+.ending-bg {
+  display: none;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 1;
+}
+.finalEnding{
+  display: block;
+}
+  </style>
+</head>
+<body>
+  <header>
+      <h1 class="title">코로나 바이러스를 잡아라!</h1> 
+  </header>
+  <div class="main">
+    <div id="ending" class="ending">
+      <p id="ending-box"></p>
+    </div>
+    <div id="ending-bg" class="ending-bg"></div>  
+    <div id="game-bg">  
+    <ul class="whack-a-mole clearfix">
+      <li class="mole">
+        <img id="1" src="./covid_1.png">
+      </li>
+      <li class="mole">
+        <img id="2" src="./covid_2.png">
+      </li>
+      <li class="mole">
+        <img id="3" src="./covid_3.png">
+      </li>
+      <li class="mole">
+        <img id="4" src="./covid_4.png">
+      </li>
+      <li class="mole">
+        <img id="5" src="./covid_5.png">
+      </li>
+      <li class="mole">
+        <img id="6" src="./covid_6.png">
+      </li>
+      <li class="mole">
+        <img id="7" src="./covid_10.png">
+      </li>
+      <li class="mole">
+        <img id="8" src="./covid_8.png">
+      </li>
+      <li class="mole">
+        <img id="9" src="./covid_9.png">
+      </li>
+    </ul>
+	</div>
+    <div class="point-box-clearfix">
+      <div class="point-wrap">
+        <p id="point-text">Point :</p>
+        <p id="count-mole">0</p>
+        <p id="count-mole2">/20</p>
+      </div>
+      <div class="btn-wrap">
+        <button type="button" class="start-btn">게임을 시작해봐!</button>
+      </div>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var moleNumber;
+var randomNum;
+var preNum;
+
+function randomHole(){
+  randomNum = Math.floor(Math.random() * 10);
+  if (preNum !== randomNum && randomNum > 0) {
+    preNum = randomNum; 
+    return randomNum;
+  }
+  return randomHole();
+ }
+
+function moleActive(num){
+    num.classList.add('active');
+}
+function moleHide(num){
+    num.classList.remove('active');
+}
+var moleCatch = 0;
+
+function showingMole(){
+  if(turn < 20){
+    moleNumber = document.getElementById(`${randomHole()}`);
+    moleActive(moleNumber);
+    moleNumber.addEventListener('click', catchMole);
+    moleCatch = setTimeout(seeMOle, 500);
+    turn++;
+  }else{
+    modalEvent();
+    startBtn.addEventListener('click', startMole);
+    startBtn.textContent = '다시 해볼까?';
+    startBtn.style.color = '#f2ecff';
+  }
+}
+
+var startBtn = document.querySelector('.start-btn');
+
+startBtn.addEventListener('click', startMole);
+
+function startMole(){
+  startBtn.removeEventListener('click', startMole);
+  startBtn.style.opa = '#3d3f43';
+  getPoint = 0;
+  turn = 0;
+  setTimeout(showingMole, 1000);
+}
+
+
+var cntBox = document.querySelector('#count-mole');
+function seeMOle(){
+  moleNumber.removeEventListener('click', catchMole);
+  moleHide(moleNumber);
+  clearTimeout(moleCatch);
+  setTimeout(showingMole, 1000);
+}
+
+function catchMole(){
+  seeMOle();
+  clearTimeout(moleCatch);
+  getPoint++;
+  cntBox.innerHTML = getPoint;
+}
+
+var endingBtn = document.querySelector('#ending-bg');
+var finalEnding = "finalEnding";
+
+endingBtn.addEventListener('click', hideModal); 
+
+function modalEvent(){
+  let point = (getPoint / 20) * 100;
+  if (point <= 70){
+    ending.children[0].innerHTML = "<span>GAME OVER </span></br>당신의 점수는&nbsp;&nbsp;<span class='last'>" + point + '점</span>!';
+  }else{
+    ending.children[0].innerHTML = "<span>YOU WIN</span></br>당신의 점수는&nbsp;&nbsp;<span class='last'>" + point + '점</span>!';
+  }
+  ending.classList.add(finalEnding);
+  endingBtn.classList.add(finalEnding);
+}
+function hideModal(){
+  ending.classList.remove(finalEnding);
+  endingBtn.classList.remove(finalEnding);
+}
+  </script>
+</body>
+</html>
